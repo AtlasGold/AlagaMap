@@ -6,7 +6,8 @@ class Home extends Component {
     return (
       <View style={{
           flex: 1,
-          alignItems: "flex-start"
+          justifyContent: "center",
+          alignItems: "center"
         }}>
         <Text>AlagaMap!</Text>
       </View>
