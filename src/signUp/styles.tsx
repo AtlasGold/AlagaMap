@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     marginVertical: -5,
     fontSize: 15,
     color: "white",
+    marginTop: 10,
   },
   passwordInput: {
     marginHorizontal: 40,
@@ -36,17 +37,18 @@ export const styles = StyleSheet.create({
   containerTitle: {
     alignItems: "center",
     alignContent: "center",
-    marginHorizontal: "35%",
+    marginHorizontal: "29%",
     color: "white",
     fontSize: 24,
     padding: 20,
   },
   loginOptions: {
-    flexDirection: "row",
+    flexDirection: "row-reverse",
     marginVertical: 10,
+    marginHorizontal: 40,
   },
   loginOptionsTextLeft: {
-    marginLeft: 50,
+    marginLeft: 30,
     fontSize: 13,
     color: "rgb(197, 198, 204)",
   },
