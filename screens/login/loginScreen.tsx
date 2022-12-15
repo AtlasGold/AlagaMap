@@ -1,8 +1,12 @@
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { styles } from "./style";
+import { signIn } from "../../firebase";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }: any) {
+  const [email, setEmail]: any = useState("");
+  const [password, setPassword]: any = useState("");
+
   return (
     <View>
       <View style={styles.title}>
@@ -13,6 +17,8 @@ export default function LoginScreen() {
         <Text style={styles.containerTitle}>Login</Text>
         <TextInput
           autoComplete="email"
+          value={email}
+          onChangeText={setEmail}
           style={styles.emailInput}
           placeholder="Digite seu Email"
           underlineColorAndroid={"white"}
@@ -21,13 +27,18 @@ export default function LoginScreen() {
         <TextInput
           autoComplete="password"
           secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
           style={styles.passwordInput}
           placeholder="Digite sua senha"
           underlineColorAndroid={"white"}
           placeholderTextColor="rgb(197, 198, 204)"
         ></TextInput>
         <View style={styles.loginOptions}>
-          <Text style={styles.loginOptionsTextLeft} onPress={() => {}}>
+          <Text
+            style={styles.loginOptionsTextLeft}
+            onPress={() => navigation.navigate("SignUp")}
+          >
             {" "}
             Crie sua conta{" "}
           </Text>
@@ -65,7 +76,10 @@ export default function LoginScreen() {
             Entrar sem Login
           </Text>
           <View style={styles.button}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={async () => await signIn(email, password)}
+            >
               <Text style={styles.buttonText}> Login</Text>
             </TouchableOpacity>
           </View>

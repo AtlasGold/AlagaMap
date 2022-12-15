@@ -1,8 +1,12 @@
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { styles } from "./styles";
-import React from "react";
+import React, { useState } from "react";
+import { signUp } from "../../firebase";
 
-export default function SignUpScreen() {
+export default function SignUpScreen({ navigation }: any) {
+  const [email, setEmail]: any = useState("");
+  const [password, setPassword]: any = useState("");
+
   return (
     <View>
       <View style={styles.title}>
@@ -20,6 +24,8 @@ export default function SignUpScreen() {
         ></TextInput>
         <TextInput
           autoComplete="email"
+          value={email}
+          onChangeText={setEmail}
           style={styles.emailInput}
           placeholder="Cadastre seu Email"
           underlineColorAndroid={"white"}
@@ -27,6 +33,8 @@ export default function SignUpScreen() {
         ></TextInput>
         <TextInput
           autoComplete="password"
+          value={password}
+          onChangeText={setPassword}
           secureTextEntry={true}
           style={styles.passwordInput}
           placeholder="Cadastre sua senha"
@@ -34,7 +42,12 @@ export default function SignUpScreen() {
           placeholderTextColor="rgb(197, 198, 204)"
         ></TextInput>
         <View style={styles.loginOptions}>
-          <Text style={styles.loginOptionsTextLeft} onPress={() => {}}>
+          <Text
+            style={styles.loginOptionsTextLeft}
+            onPress={() => {
+              navigation.goBack("SignIn");
+            }}
+          >
             Já possuo conta{" "}
           </Text>
         </View>
@@ -67,7 +80,10 @@ export default function SignUpScreen() {
             Entrar sem Login
           </Text>
           <View style={styles.button}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={async () => await signUp(email, password)}
+            >
               <Text style={styles.buttonText}> Cadastro</Text>
             </TouchableOpacity>
           </View>
