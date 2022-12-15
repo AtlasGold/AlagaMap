@@ -1,11 +1,20 @@
 import React, { useState,useEffect } from 'react';
-import { Text, View, Button, Platform, StyleSheet,SafeAreaView } from 'react-native';
+import { Text, View, Button, Platform, StyleSheet,SafeAreaView,Alert } from 'react-native';
 import {Marker} from 'react-native-maps';
 import MapView from "react-native-map-clustering";
 
 
 const Mapa = ({navigation}: {navigation: any}) => {
-
+  
+  const alerta = () =>{
+    Alert.alert(
+      "Aviso",
+      "Clique em algum lugar do mapa para mudar o ponto que deseja cadastrar.",
+      [
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+    );
+  }
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<any[]>([]);
@@ -13,7 +22,7 @@ const Mapa = ({navigation}: {navigation: any}) => {
       fetch('https://servidor-alagamaps.vercel.app/api/pontos/todosSeparados')
       .then((response) => response.json())
         .then((json) => setData(json))
-      .catch((error) => console.error(error))
+      .catch((error) => console.error(error)) 
     },[])
     return (
       
@@ -25,19 +34,21 @@ const Mapa = ({navigation}: {navigation: any}) => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}>
-          {data.map(item => {
+          {data.map((item,index) => {
             return (
             <Marker
+            key={index}
             coordinate={{
               latitude:item.lat,
-              longitude:item.long
+              longitude:item.long 
             }}
             />
             )
           })}
         </MapView>
         <View style={css.buttonContainer}>
-          <Button title="Reporta Ponto" onPress={() => navigation.navigate('Reporte')}/>
+          <Button title="Reportar Ponto" onPress={() => {navigation.navigate('Reporte');  alerta()}}/>
+          <Button title="Reload" onPress={ () => console.log('ooi') }/>
         </View>
       </SafeAreaView>
     );
