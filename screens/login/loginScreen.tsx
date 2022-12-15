@@ -1,7 +1,7 @@
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { styles } from "./style";
-import { signIn } from "../../firebase";
+import { signIn, signInAnon } from "../../firebase";
 
 export default function LoginScreen({ navigation }: any) {
   const [email, setEmail]: any = useState("");
@@ -60,7 +60,7 @@ export default function LoginScreen({ navigation }: any) {
         </View>
         <View style={{ flexDirection: "column" }}>
           <Text
-            onPress={() => {}}
+            onPress={() => signInAnon()}
             style={{
               color: "white",
               fontSize: 18,
