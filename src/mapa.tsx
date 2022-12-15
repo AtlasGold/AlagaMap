@@ -15,11 +15,26 @@ const Mapa = ({navigation}: {navigation: any}) => {
       ]
     );
   }
-
+  const atualizar = () =>{
+    fetch('https://servidor-alagamaps.vercel.app/api/pontos/todosSeparados',{
+        method: "GET",
+        headers: headerInformacoes
+      })
+      .then((response) => response.json())
+        .then((json) => setData(json))
+      .catch((error) => console.error(error)) 
+  }
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<any[]>([]);
+  let headerInformacoes = {
+    "Content-Type": "application/json",
+    "Cache-Control": "no-cache"
+  };
       useEffect( () => {
-      fetch('https://servidor-alagamaps.vercel.app/api/pontos/todosSeparados')
+      fetch('https://servidor-alagamaps.vercel.app/api/pontos/todosSeparados',{
+        method: "GET",
+        headers: headerInformacoes
+      })
       .then((response) => response.json())
         .then((json) => setData(json))
       .catch((error) => console.error(error)) 
@@ -48,7 +63,7 @@ const Mapa = ({navigation}: {navigation: any}) => {
         </MapView>
         <View style={css.buttonContainer}>
           <Button title="Reportar Ponto" onPress={() => {navigation.navigate('Reporte');  alerta()}}/>
-          <Button title="Reload" onPress={ () => console.log('ooi') }/>
+          <Button title="Reload" onPress={ () => atualizar() }/>
         </View>
       </SafeAreaView>
     );
