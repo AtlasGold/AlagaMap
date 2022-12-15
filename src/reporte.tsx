@@ -24,7 +24,7 @@ const cadastrarPonto = (longitude:any, latitude:any,navigation:any) => {
       Alert.alert(
         "Erro!",
         "Parece que houve um erro ao cadastrar o ponto, tente denovo. Caso o problema persistir, entre em contato conosco.",
-        [{ text: "OK", onPress: () => console.log("OK Pressed") }]
+        [{ text: "OK", onPress: () => console.log("OK") }]
       );
     });
 }
@@ -61,7 +61,6 @@ const Reporte = ({navigation}: {navigation: any}) => {
   
 
   const colocarMarker = (coordinate:any) =>{
-    console.log(coordinate)
     setMarker(coordinate)
   }
  
