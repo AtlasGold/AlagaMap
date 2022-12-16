@@ -13,8 +13,7 @@ import SignUp from "./screens/signUp/signUp";
 import Mapa from "./screens/main/mainScreen";
 import Reporte from "./screens/reporte/reporte";
 import Home from "./screens/menu/home";
-
-
+LogBox.ignoreAllLogs()
 const Stack = createStackNavigator();
 const options: StackNavigationOptions = {
   headerShown: false,
