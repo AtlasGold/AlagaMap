@@ -4,75 +4,67 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Linking,
 } from 'react-native';
 import Constants from 'expo-constants';
-
 import { Card } from 'react-native-paper';
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-const Stack = createStackNavigator();
-
-const url =
-  'https://stackoverflow.com/questions/65647568/react-native-creating-sections-in-a-list-with-clickable-link-to-screen#65647648';
-
-
 const Home = ({ navigation }: {navigation:any}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Mapa')}>
         <Card style={styles.list}>
-          <Text>Mapa</Text>
+          <Text style={styles.text}>Mapa</Text>
         </Card>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Mapa')}>
         <Card style={styles.list}>
-          <Text>Contatos úteis</Text>
+          <Text style={styles.text}>Contatos úteis</Text>
         </Card>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Mapa')}>
         <Card style={styles.list}>
-          <Text>Fale conosco</Text>
+          <Text style={styles.text}>Fale conosco</Text>
         </Card>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Mapa')}>
         <Card style={styles.list}>
-          <Text>Configurações</Text>
+          <Text style={styles.text}>Configurações</Text>
         </Card>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Mapa')}>
         <Card style={styles.list}>
-          <Text>Nos avalie</Text>
+          <Text style={styles.text}>Nos avalie</Text>
         </Card>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Mapa')}>
         <Card style={styles.list}>
-          <Text>Sobre</Text>
+          <Text style={styles.text}>Sobre</Text>
         </Card>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
         <Card style={styles.list}>
-          <Text>Logout</Text>
+          <Text style={styles.text}>Logout</Text>
         </Card>
       </TouchableOpacity>
       
     </View>
   );
 };
-
-export default Home
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#4758F0",
+    backgroundColor: "#fff",
     padding: 8,
   },
   list: {
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: '#4758F0',
     borderRadius: 5,
     marginTop: 10,
   },
+  text:{
+    color:'#fff',
+    fontSize: 20
+  }
 });
+export default Home
