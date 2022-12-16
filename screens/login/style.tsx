@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
   containerTitle: {
     alignItems: "center",
     alignContent: "center",
-    marginHorizontal: "35%",
+    marginHorizontal: "30%",
     color: "white",
     fontSize: 24,
     padding: 20,

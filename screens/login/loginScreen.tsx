@@ -55,15 +55,16 @@ export default function LoginScreen({ navigation }: any) {
           }}
         >
           <Text style={{ color: "rgb(230, 231, 237)" }}>
-            Não quer criar uma conta ? {"\n"} {"          "}Sem problemas!
+            Não quer criar uma conta? {"\n"} {"          "}Sem problemas!
           </Text>
         </View>
         <View style={{ flexDirection: "column" }}>
           <Text
-            onPress={() => signInAnon()}
+            onPress={() => {signInAnon(); navigation.navigate('Mapa')}}
             style={{
+              textAlign: 'center',
               color: "white",
-              fontSize: 18,
+              fontSize: 15,
               marginHorizontal: 98,
               marginVertical: 10,
               borderRadius: 50,
@@ -78,7 +79,8 @@ export default function LoginScreen({ navigation }: any) {
           <View style={styles.button}>
             <TouchableOpacity
               style={styles.button}
-              onPress={async () => await signIn(email, password)}
+              onPress={async () => {await signIn(email, password)}
+              }
             >
               <Text style={styles.buttonText}> Login</Text>
             </TouchableOpacity>
