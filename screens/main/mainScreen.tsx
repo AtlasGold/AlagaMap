@@ -13,7 +13,7 @@ const Mapa = ({navigation}: {navigation?: any}) => {
       "Aviso",
       "Clique em algum lugar do mapa para mudar o ponto que deseja cadastrar.",
       [
-        { text: "OK", onPress: () => console.log("OK Pressed") }
+        { text: "OK", onPress: () => console.log("Ok, eu sei usar a tela de reporte.") }
       ]
     );
   }
@@ -77,17 +77,18 @@ const Mapa = ({navigation}: {navigation?: any}) => {
           
         <View style={css.buttonContainer}>
         <IconButton
-          title={'Reportar ponto'}
-          onPress={() => { {navigation.navigate('Reporte');  alerta()}}}
-          icon={<Octicons name="report" size={30} color="white" style={css.icon} />}
-        />
-        <IconButton
           title={'Menu'}
           onPress={() => { {navigation.navigate('Home');}}}
           icon={<Feather  name="menu" size={30} color="white" style={css.icon} />}
         />
         <IconButton
-          title={'Atualizar mapa'}
+          title={'Reportar'}
+          onPress={() => { {navigation.navigate('Reporte');  alerta()}}}
+          icon={<Octicons name="report" size={30} color="white" style={css.icon} />}
+        />
+
+        <IconButton
+          title={'Atualizar'}
           onPress={() => { {atualizar()}}}
           icon={<Feather name="refresh-ccw" size={30} color="white" style={css.icon} />}
         />
@@ -105,12 +106,10 @@ const css = StyleSheet.create({
   },
   buttonContainer:{
     backgroundColor: "#4758F0",
-    position: 'absolute',
-    left:     '55%',
-    top:      '60%',
     alignItems:'center',
     padding:20,
-    borderRadius: 5
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   headContainer:{
       padding: 20,
